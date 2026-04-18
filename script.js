@@ -1,16 +1,12 @@
 
-// =====================
 // Canvas setup
-// =====================
 const canvas = document.getElementById("alpacaCanv");
 const ctx = canvas.getContext("2d");
 
 canvas.width = 300;
 canvas.height = 300;
 
-// =====================
-// Layer order (IMPORTANT)
-// =====================
+// Layer order
 const layers = [
   "background",
   "neck",
@@ -22,9 +18,9 @@ const layers = [
   "accessories"
 ];
 
-// =====================
+
 // State
-// =====================
+
 const state = {
   background: "blue50",
   neck: "default",
@@ -36,9 +32,7 @@ const state = {
   accessories: "none"
 };
 
-// =====================
-// Options (ALL CATEGORIES)
-// =====================
+// Options 
 const options = {
   background: ["blue50", "blue60", "green50", "yellow50"],
   neck: ["default", "bend-back"],
@@ -50,9 +44,8 @@ const options = {
   accessories: ["none", "glasses", "earrings"]
 };
 
-// =====================
+
 // Render Alpaca (FIXED SAFE VERSION)
-// =====================
 function renderAlpaca() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -75,9 +68,7 @@ function renderAlpaca() {
   });
 }
 
-// =====================
 // Render style options dynamically
-// =====================
 let currentCategory = "hair";
 
 function renderStyles() {
@@ -104,9 +95,8 @@ function renderStyles() {
   });
 }
 
-// =====================
+
 // Category click handler
-// =====================
 document.querySelectorAll(".category-item").forEach(item => {
   item.addEventListener("click", () => {
     currentCategory = item.dataset.category;
@@ -120,9 +110,8 @@ document.querySelectorAll(".category-item").forEach(item => {
   });
 });
 
-// =====================
 // Randomize button
-// =====================
+
 document.getElementById("randomizeButton").addEventListener("click", () => {
   for (let key in options) {
     const arr = options[key];
@@ -132,9 +121,7 @@ document.getElementById("randomizeButton").addEventListener("click", () => {
   renderAlpaca();
 });
 
-// =====================
 // Download button
-// =====================
 document.getElementById("downloadButton").addEventListener("click", () => {
   const link = document.createElement("a");
   link.download = "alpaca.png";
@@ -142,8 +129,8 @@ document.getElementById("downloadButton").addEventListener("click", () => {
   link.click();
 });
 
-// =====================
+
 // INIT
-// =====================
+
 renderStyles();
 renderAlpaca();
